@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Carbon Sense Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/vscode-ext/carbon-sense"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/vscode-ext/carbon-sense/dist/**/*.js"
+      ],
+      "preLaunchTask": "carbon-sense: compile"
+    }
+  ]
+}

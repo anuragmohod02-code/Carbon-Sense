@@ -1,0 +1,131 @@
+{
+  "name": "carbon-sense",
+  "displayName": "Carbon Sense AI",
+  "description": "Carbon-aware AI — optimize prompts, track CO₂, use @carbon-sense in Copilot Chat",
+  "version": "0.0.1",
+  "publisher": "carbon-sense-team",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "extensionDependencies": [
+    "github.copilot-chat"
+  ],
+  "categories": ["AI", "Other"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "icon": "media/ecostack-icon.png",
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "carbon-sense.chat",
+        "name": "carbon-sense",
+        "fullName": "Carbon Sense AI",
+        "description": "Carbon-aware AI: compresses prompts, routes to efficient models, tracks CO₂",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "stats",
+            "description": "Show session CO₂ saved and token metrics"
+          },
+          {
+            "name": "optimize",
+            "description": "Preview prompt compression without calling LLM"
+          },
+          {
+            "name": "send",
+            "description": "Optimize prompt and open Copilot Chat with optimized text"
+          },
+          {
+            "name": "reset",
+            "description": "Reset session metrics to zero"
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "carbon-sense.optimize",
+        "title": "Carbon Sense: Optimize Selection"
+      },
+      {
+        "command": "carbon-sense.optimizeForCopilot",
+        "title": "Carbon Sense: Optimize Prompt for Copilot"
+      },
+      {
+        "command": "carbon-sense.showDashboard",
+        "title": "Carbon Sense: Open Web Dashboard"
+      },
+      {
+        "command": "carbon-sense.resetSession",
+        "title": "Carbon Sense: Reset Session Metrics"
+      },
+      {
+        "command": "carbon-sense.setMemorySessionId",
+        "title": "Carbon Sense: Set Memory Session ID"
+      },
+      {
+        "command": "carbon-sense.clearMemorySessionId",
+        "title": "Carbon Sense: Clear Memory Session ID"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "carbon-sense.optimize",
+        "key": "ctrl+shift+e",
+        "mac": "cmd+shift+e",
+        "when": "editorHasSelection"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "carbon-sense.optimize",
+          "when": "editorHasSelection",
+          "group": "carbon-sense@1"
+        },
+        {
+          "command": "carbon-sense.optimizeForCopilot",
+          "when": "editorHasSelection",
+          "group": "carbon-sense@2"
+        }
+      ],
+      "commandPalette": [
+        { "command": "carbon-sense.optimize" },
+        { "command": "carbon-sense.optimizeForCopilot" },
+        { "command": "carbon-sense.showDashboard" },
+        { "command": "carbon-sense.resetSession" },
+        { "command": "carbon-sense.setMemorySessionId" },
+        { "command": "carbon-sense.clearMemorySessionId" }
+      ]
+    },
+    "configuration": {
+      "title": "Carbon Sense",
+      "properties": {
+        "carbon-sense.backendUrl": {
+          "type": "string",
+          "default": "http://localhost:8080",
+          "description": "URL of the Carbon Sense FastAPI backend"
+        },
+        "carbon-sense.memorySessionId": {
+          "type": "string",
+          "default": "",
+          "description": "Optional fixed memory session id. Leave empty to auto-generate per project workspace."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0",
+    "@types/node": "20.x",
+    "typescript": "^5.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.0.0"
+  }
+}
