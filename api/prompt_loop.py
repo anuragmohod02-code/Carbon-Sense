@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import json
 
-from engine import Carbon SenseEngine
+from engine import CarbonSenseEngine
 
 
 def read_prompt() -> str:
@@ -26,7 +26,7 @@ def read_prompt() -> str:
 
 
 def main() -> None:
-    engine = Carbon SenseEngine()
+    engine = CarbonSenseEngine()
 
     print("Carbon Sense prompt loop started.")
     print("Commands: /run (submit), /quit (exit)")

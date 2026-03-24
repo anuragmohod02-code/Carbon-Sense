@@ -11,7 +11,16 @@ from dotenv import load_dotenv
 load_dotenv()
 API_KEY = os.getenv('GEMINI_API_KEY')
 
-_client = genai.Client(api_key=API_KEY)
+if not API_KEY:
+    print("WARNING: GEMINI_API_KEY not found. LLM features will be disabled.")
+    class MockClient:
+        def __getattr__(self, name):
+            return self
+        def __call__(self, *args, **kwargs):
+            return self
+    _client = MockClient()
+else:
+    _client = genai.Client(api_key=API_KEY)
 
 
 def count_tokens(

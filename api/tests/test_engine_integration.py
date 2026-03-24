@@ -1,4 +1,4 @@
-from engine import Carbon SenseEngine
+from engine import CarbonSenseEngine
 import engine as engine_module
 
 
@@ -61,7 +61,7 @@ def test_engine_applies_l5_pipeline_when_history_present(monkeypatch):
     stored = {}
     monkeypatch.setattr(engine_module.l3, "store", lambda prompt, response: stored.update({"prompt": prompt, "response": response}))
 
-    engine = Carbon SenseEngine()
+    engine = CarbonSenseEngine()
     result = engine.complete(
         prompt="Original user prompt",
         history=[{"role": "user", "content": "old user"}],
@@ -117,7 +117,7 @@ def test_engine_skips_l5_when_no_history(monkeypatch):
     monkeypatch.setattr(engine_module, "call", lambda **_kwargs: "DIRECT_RESPONSE")
     monkeypatch.setattr(engine_module.l3, "store", lambda *_args, **_kwargs: None)
 
-    engine = Carbon SenseEngine()
+    engine = CarbonSenseEngine()
     result = engine.complete(prompt="prompt without history", history=None)
 
     assert result["response"] == "DIRECT_RESPONSE"

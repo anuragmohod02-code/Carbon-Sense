@@ -10,7 +10,7 @@ from metrics import SessionMetrics, RequestRecord, estimate_tokens, estimate_tok
 from config import DEFAULT_BASELINE_MODEL, DEFAULT_MODEL
 
 
-class Carbon SenseEngine:
+class CarbonSenseEngine:
     def __init__(self):
         self.session = SessionMetrics()
 

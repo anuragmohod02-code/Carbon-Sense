@@ -17,11 +17,7 @@ from pydantic import BaseModel
 from typing import Optional
 from fastapi.responses import JSONResponse
 
-from engine import Carbon SenseEngine
-try:
-    from demo_seed import SEED_DATA
-except ImportError:
-    SEED_DATA = []
+from engine import CarbonSenseEngine
 
 from ecostack.memory_store import (
     init_db, get_conn, get_chunks, append_chunk,
@@ -42,7 +38,7 @@ from ecostack.models import (
 # ── App ───────────────────────────────────────────────────────
 
 app = FastAPI(title="Carbon Sense API", version="0.2.0")
-engine = Carbon SenseEngine()
+engine = CarbonSenseEngine()
 
 app.add_middleware(
     CORSMiddleware,
@@ -168,8 +164,6 @@ class ChatRequest(BaseModel):
 @app.on_event("startup")
 def startup() -> None:
     init_db()
-    if SEED_DATA:
-        engine.warm_cache(SEED_DATA)
 
 
 # ---------------------------------------------------------------------------
@@ -211,19 +205,6 @@ class SessionState:
 
 state = SessionState()
 
-# ---------------------------------------------------------------------------
-# App setup
-# ---------------------------------------------------------------------------
-
-app = FastAPI(title="Carbon Sense API", version="0.2.0")
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 # ---------------------------------------------------------------------------
@@ -382,21 +363,7 @@ def chat(body: ChatRequest) -> Dict[str, object]:
     }
 
 
-@app.post("/api/cache/store")
-def cache_store(body: CacheStoreRequest) -> dict:
-    engine.cache_store(body.prompt, body.response)
-    return {"stored": True}
 
-
-@app.post("/api/cache/check")
-def cache_check(body: PromptRequest) -> dict:
-    result = engine.cache_check(body.prompt)
-    return {
-        "hit": result.get("hit", False),
-        "cached_response": result.get("response"),
-        "similarity": result.get("similarity", 0.0),
-        "matched_prompt": result.get("matched_prompt"),
-    }
 
 
 @app.get("/api/metrics")

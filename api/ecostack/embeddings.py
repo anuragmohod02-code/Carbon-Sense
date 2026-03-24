@@ -6,7 +6,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-_client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+API_KEY = os.getenv("GEMINI_API_KEY")
+if not API_KEY:
+    class MockClient:
+        def __getattr__(self, name): return self
+        def __call__(self, *args, **kwargs): return self
+    _client = MockClient()
+else:
+    _client = genai.Client(api_key=API_KEY)
 _MODEL = "models/gemini-embedding-001"
 
 

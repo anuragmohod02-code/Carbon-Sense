@@ -2,7 +2,7 @@
 import argparse
 import json
 
-from engine import Carbon SenseEngine
+from engine import CarbonSenseEngine
 
 
 def parse_args() -> argparse.Namespace:
@@ -20,7 +20,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    engine = Carbon SenseEngine()
+    engine = CarbonSenseEngine()
 
     result = engine.complete(
         prompt=args.prompt,
