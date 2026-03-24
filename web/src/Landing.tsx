@@ -132,7 +132,7 @@ export default function Landing() {
       {/* ── The Problem ──────────────────────────────────────────────── */}
       <section id="the-problem" className="py-28 px-6">
         <div className="max-w-[1100px] mx-auto">
-          <div {...problem} >
+          <div ref={problem.ref} className={problem.className}>
             <p className="text-[11px] text-red-400/70 uppercase tracking-[0.2em] font-semibold mb-3 text-center">
               The Problem
             </p>
@@ -200,7 +200,7 @@ export default function Landing() {
 
           <div className="space-y-20 md:space-y-28">
             {/* Step 1 */}
-            <div {...howStep1} className={`${howStep1.className} flex flex-col md:flex-row items-center gap-10 md:gap-16`}>
+            <div ref={howStep1.ref} className={howStep1.className + " flex flex-col md:flex-row items-center gap-10 md:gap-16"}>
               <div className="flex-1 order-2 md:order-1">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-full border-2 border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">
@@ -221,7 +221,7 @@ export default function Landing() {
             </div>
 
             {/* Step 2 */}
-            <div {...howStep2} className={`${howStep2.className} flex flex-col md:flex-row items-center gap-10 md:gap-16`}>
+            <div ref={howStep2.ref} className={howStep2.className + " flex flex-col md:flex-row items-center gap-10 md:gap-16"}>
               <div className="flex-shrink-0">
                 <div className="w-32 h-32 rounded-2xl bg-blue-500/5 border border-blue-500/10 flex items-center justify-center step-icon">
                   <Zap className="w-14 h-14 text-blue-400/60" />
@@ -242,7 +242,7 @@ export default function Landing() {
             </div>
 
             {/* Step 3 */}
-            <div {...howStep3} className={`${howStep3.className} flex flex-col md:flex-row items-center gap-10 md:gap-16`}>
+            <div ref={howStep3.ref} className={howStep3.className + " flex flex-col md:flex-row items-center gap-10 md:gap-16"}>
               <div className="flex-1 order-2 md:order-1">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-full border-2 border-purple-500/30 flex items-center justify-center text-purple-400 font-bold text-sm">
@@ -267,7 +267,7 @@ export default function Landing() {
 
       {/* ── Impact ───────────────────────────────────────────────────── */}
       <section className="py-28 px-6">
-        <div className="max-w-[900px] mx-auto" {...impact}>
+        <div ref={impact.ref} className={`max-w-[900px] mx-auto ${impact.className}`}>
           <p className="text-[11px] text-emerald-400/70 uppercase tracking-[0.2em] font-semibold mb-3 text-center">
             The Impact
           </p>
@@ -310,7 +310,7 @@ export default function Landing() {
 
       {/* ── Final CTA ────────────────────────────────────────────────── */}
       <section className="py-28 px-6">
-        <div className="max-w-[700px] mx-auto text-center" {...cta}>
+        <div ref={cta.ref} className={`max-w-[700px] mx-auto text-center ${cta.className}`}>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
             See Your Impact{' '}
             <span className="bg-gradient-to-r from-emerald-300 to-teal-400 bg-clip-text text-transparent">

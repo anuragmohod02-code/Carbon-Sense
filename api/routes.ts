@@ -1,12 +1,12 @@
-export const CARBONPROXY_API_PREFIX = '/api';
+export const CARBONSENSE_API_PREFIX = '/api';
 
-export const CARBONPROXY_API_ROUTES = {
-  optimize: `${CARBONPROXY_API_PREFIX}/optimize`,
-  cacheCheck: `${CARBONPROXY_API_PREFIX}/cache/check`,
-  cacheStore: `${CARBONPROXY_API_PREFIX}/cache/store`,
-  metrics: `${CARBONPROXY_API_PREFIX}/metrics`,
-  reset: `${CARBONPROXY_API_PREFIX}/demo/reset`,
-  health: `${CARBONPROXY_API_PREFIX}/health`,
+export const CARBONSENSE_API_ROUTES = {
+  optimize: `${CARBONSENSE_API_PREFIX}/optimize`,
+  cacheCheck: `${CARBONSENSE_API_PREFIX}/cache/check`,
+  cacheStore: `${CARBONSENSE_API_PREFIX}/cache/store`,
+  metrics: `${CARBONSENSE_API_PREFIX}/metrics`,
+  reset: `${CARBONSENSE_API_PREFIX}/demo/reset`,
+  health: `${CARBONSENSE_API_PREFIX}/health`,
 } as const;
 
-export type Carbon SenseApiRouteKey = keyof typeof CARBONPROXY_API_ROUTES;
+export type CarbonSenseApiRouteKey = keyof typeof CARBONSENSE_API_ROUTES;

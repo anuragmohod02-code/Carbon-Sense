@@ -10,13 +10,13 @@ All backend routes are prefixed with `/api`.
 
 Use `api/routes.ts` from any TypeScript client (extension/web) to avoid route drift:
 
-- `CARBONPROXY_API_PREFIX`
-- `CARBONPROXY_API_ROUTES.optimize`
-- `CARBONPROXY_API_ROUTES.cacheCheck`
-- `CARBONPROXY_API_ROUTES.cacheStore`
-- `CARBONPROXY_API_ROUTES.metrics`
-- `CARBONPROXY_API_ROUTES.reset`
-- `CARBONPROXY_API_ROUTES.health`
+- `CARBONSENSE_API_PREFIX`
+- `CARBONSENSE_API_ROUTES.optimize`
+- `CARBONSENSE_API_ROUTES.cacheCheck`
+- `CARBONSENSE_API_ROUTES.cacheStore`
+- `CARBONSENSE_API_ROUTES.metrics`
+- `CARBONSENSE_API_ROUTES.reset`
+- `CARBONSENSE_API_ROUTES.health`
 
 ## Backend examples
 

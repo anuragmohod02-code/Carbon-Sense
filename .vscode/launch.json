@@ -9,7 +9,7 @@
         "--extensionDevelopmentPath=${workspaceFolder}/vscode-ext/carbon-sense"
       ],
       "outFiles": [
-        "${workspaceFolder}/vscode-ext/carbon-sense/dist/**/*.js"
+        "${workspaceFolder}/vscode-ext/carbon-sense/out/**/*.js"
       ],
       "preLaunchTask": "carbon-sense: compile"
     }

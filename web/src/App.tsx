@@ -69,7 +69,7 @@ interface OptimizeResult {
   optimized_prompt: string;
 }
 
-const API = 'http://localhost:8080';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
 const MODEL_COLORS: Record<string, string> = {
   'claude-haiku-4-5': '#2dd4bf',
@@ -455,7 +455,7 @@ export default function Dashboard() {
                       borderRadius: 12,
                       fontSize: 12,
                     }}
-                    formatter={(val: number) => [`${val.toFixed(6)}g`, 'CO₂']}
+                    formatter={(val: any) => [`${Number(val || 0).toFixed(6)}g`, 'CO₂'] as [string, string]}
                     labelFormatter={(v) => `Request #${v}`}
                   />
                   <Area

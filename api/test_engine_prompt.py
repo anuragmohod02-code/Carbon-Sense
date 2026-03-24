@@ -6,7 +6,7 @@ from engine import CarbonSenseEngine
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Test Carbon SenseEngine with a single prompt")
+    parser = argparse.ArgumentParser(description="Test CarbonSenseEngine with a single prompt")
     parser.add_argument("prompt", help="Prompt string to optimize and run")
     parser.add_argument("--task-type", default=None, help="Optional task type hint")
     parser.add_argument("--output-format", default=None, choices=["json", "code", "bullets"], help="Optional output format")
