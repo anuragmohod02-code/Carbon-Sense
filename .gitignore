@@ -37,5 +37,6 @@ __pycache__/
 **/*.pyc
 .pytest_cache/
 **/.pytest_cache/
-
-
+# Python virtualenv
+.venv/
+**/.venv/
